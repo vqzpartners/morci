@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Morci - Odontología Estética, Biomimética y Biológica en Panamá</title>
+    
+    <!-- SEO Meta Tags for Panama (Preserved) -->
+    <meta name="description" content="Transformando sonrisas con Odontología Estética, Biomimética y Biológica en Panamá. Especialista en diseño de sonrisa y tratamientos dentales avanzados.">
+    <meta name="keywords" content="odontología estética panamá, dentista panamá, biomimética dental, odontología biológica, diseño de sonrisa, carillas dentales, blanqueamiento dental, implantes dentales panamá, dentista ciudad de panamá">
+    <meta name="author" content="Dr. Morci">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="Spanish">
+    <meta name="geo.region" content="PA">
+    <meta name="geo.country" content="Panama">
+    <meta name="geo.placename" content="Ciudad de Panamá">
+    
+    <!-- Open Graph Tags (Preserved) -->
+    <meta property="og:title" content="Dr. Morci - Odontología Estética en Panamá">
+    <meta property="og:description" content="Transformando sonrisas con Odontología Estética, Biomimética y Biológica.">
+    <meta property="og:image" content="https://drmorci.com/img/social-banner.jpg">
+    <meta property="og:url" content="">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_PA">
+    
+    <!-- Twitter Card (Preserved) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Dr. Morci - Odontología Estética en Panamá">
+    <meta name="twitter:description" content="Transformando sonrisas con Odontología Estética, Biomimética y Biológica">
+    <meta name="twitter:image" content="https://drmorci.com/img/social-banner.jpg">
+    
+    <!-- Favicon & Fonts (Preserved) -->
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <link rel="apple-touch-icon" href="img/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Theme Color (Preserved) -->
+    <meta name="theme-color" content="#000000">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!-- Structured Data (Preserved) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Dentist",
+        "name": "Dr. Morci",
+        "description": "Especialista en Odontología Estética, Biomimética y Biológica",
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "PA",
+            "addressLocality": "Ciudad de Panamá"
+        },
+        "specialty": ["Odontología Estética", "Biomimética Dental", "Odontología Biológica"],
+        "image": "https://drmorci.com/img/profile.jpg"
+    }
+    </script>
+
+    <style>
+        :root {
+            --brand-gold: #ffc107;
+            --dark-bg: #000;
+            --light-text: #fff;
+            --dark-text: #000;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--dark-bg); color: var(--light-text); min-height: 100vh; padding: 20px; }
+        .container { max-width: 900px; margin: 0 auto; }
+
+        /* --- ALL ORIGINAL STYLES PRESERVED AND INTEGRATED --- */
+
+        /* Header Styles */
+        .header { background: linear-gradient(135deg, rgba(255, 193, 7, 0.95), rgba(255, 179, 0, 0.9)); backdrop-filter: blur(20px); border-radius: 30px; padding: 3rem 2rem; margin-bottom: 3rem; text-align: center; box-shadow: 0 25px 50px rgba(255, 193, 7, 0.4); border: 1px solid rgba(255, 193, 7, 0.3); position: relative; overflow: hidden; }
+        .profile-img { width: 200px; height: 200px; border-radius: 50%; margin: 0 auto 2rem; display: block; border: 8px solid var(--dark-bg); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6); position: relative; z-index: 2; }
+        .doctor-name { font-size: 3rem; font-weight: 800; color: var(--dark-text); margin-bottom: 1rem; position: relative; z-index: 2; }
+        .tagline { font-size: 1.4rem; color: #333; line-height: 1.4; max-width: 600px; margin: 0 auto; font-weight: 500; position: relative; z-index: 2; }
+
+        /* Section & Card Styles */
+        .section-title { color: var(--brand-gold); font-size: 1.3rem; font-weight: 600; margin: 3rem 0 1.5rem 0; display: flex; align-items: center; gap: 0.75rem; }
+        .section-title::after { content: ""; height: 2px; background: linear-gradient(90deg, var(--brand-gold), transparent); flex-grow: 1; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 2rem; }
+        .service-card { background-size: cover; background-position: center; border-radius: 20px; height: 280px; position: relative; transition: all 0.3s ease; cursor: pointer; overflow: hidden; }
+        .service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.8) 100%); border-radius: 20px; transition: all 0.3s ease; }
+        .service-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(255, 193, 7, 0.2); }
+        .service-card:hover::before { background: linear-gradient( to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.9) 100% ); }
+        .service-content { position: absolute; bottom: 0; left: 0; right: 0; padding: 2rem; z-index: 2; }
+        .service-title { font-size: 1.3rem; font-weight: 700; color: var(--brand-gold); margin-bottom: 0.8rem; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); }
+        .service-desc { font-size: 1rem; color: var(--light-text); line-height: 1.5; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); }
+        
+        /* About Section */
+        .about-card { background: rgba(255, 193, 7, 0.1); backdrop-filter: blur(15px); border-radius: 20px; padding: 2rem; margin-bottom: 1.5rem; border: 1px solid rgba(255, 193, 7, 0.3); }
+        .about-content { display: grid; grid-template-columns: auto 1fr; gap: 1.5rem; align-items: start; }
+        .about-icon { width: 60px; height: 60px; background: linear-gradient(135deg, #ffc107, #ffb300); border-radius: 15px; display: flex; align-items: center; justify-content: center; color: #000; font-size: 24px; flex-shrink: 0; }
+        .about-text { line-height: 1.8; color: #ffffff; font-size: 1rem; }
+        .about-highlights { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+        .highlight-item { background: rgba(255, 193, 7, 0.1); padding: 1rem; border-radius: 12px; border: 1px solid rgba(255, 193, 7, 0.2); text-align: center; }
+        .highlight-icon { color: #ffc107; font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .highlight-text { color: #fff; font-size: 0.9rem; font-weight: 500; }
+
+        /* Contact Section */
+        .contact-options { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 1.5rem; align-items: stretch; }
+        .contact-card { background: rgba(255, 193, 7, 0.1); backdrop-filter: blur(15px); border-radius: 15px; padding: 1.5rem; text-align: center; border: 1px solid rgba(255, 193, 7, 0.3); transition: all 0.3s ease; text-decoration: none; color: #fff; cursor: pointer; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        .contact-card:hover { transform: translateY(-3px); background: rgba(255, 193, 7, 0.2); text-decoration: none; color: #fff; border-color: rgba(255, 193, 7, 0.5); box-shadow: 0 15px 30px rgba(255, 193, 7, 0.2); }
+        .contact-card.primary { background: rgba(255, 193, 7, 0.2); border: 2px solid rgba(255, 193, 7, 0.5); }
+        .contact-icon { width: 60px; height: 60px; border-radius: 15px; background: linear-gradient(135deg, #ffc107, #ffb300); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: #000; font-size: 24px; }
+        .contact-card.primary .contact-icon { width: 80px; height: 80px; font-size: 32px; }
+        .contact-card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; }
+        .contact-card.primary h3 { font-size: 1.3rem; }
+        .contact-card p { font-size: 0.9rem; color: #ccc; }
+        
+        /* Reviews Section */
+        .reviews-section { padding: 4rem 0; background: var(--dark-bg); position: relative; overflow-x: hidden; }
+        .reviews-carousel { position: relative; margin: 0 -2rem; }
+        .reviews-track { display: flex; gap: 2rem; animation: infiniteScroll 45s linear infinite; width: max-content; padding: 0 2rem; }
+        .reviews-track:hover { animation-play-state: paused; }
+        @keyframes infiniteScroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-100% + 100vw)); } }
+        .review-card { background: linear-gradient(145deg, rgba(255, 193, 7, 0.08), rgba(255, 193, 7, 0.05)); backdrop-filter: blur(20px); border: 1px solid rgba(255, 193, 7, 0.2); border-radius: 16px; padding: 2rem; width: 350px; min-width: 350px; display: flex; flex-direction: column; }
+        .review-card:hover { transform: translateY(-8px); border-color: rgba(255, 193, 7, 0.4); }
+        .review-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+        .reviewer-avatar { width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #ffc107 0%, #ff8f00 100%); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.1rem; color: #000; flex-shrink: 0; }
+        .reviewer-info h4 { color: #ffc107; font-size: 1.1rem; }
+        .review-rating .star { color: #ffc107; font-size: 1rem; }
+        .review-text { color: #e0e0e0; line-height: 1.6; font-size: 0.95rem; flex-grow: 1; }
+        .reviews-carousel::before, .reviews-carousel::after { content: ''; position: absolute; top: 0; bottom: 0; width: 120px; z-index: 2; pointer-events: none; }
+        .reviews-carousel::before { left: 0; background: linear-gradient(90deg, #000 0%, rgba(0,0,0,0.8) 60%, transparent 100%); }
+        .reviews-carousel::after { right: 0; background: linear-gradient(-90deg, #000 0%, rgba(0,0,0,0.8) 60%, transparent 100%); }
+        .review-cta { display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, #ffc107, #ffb300); color: #000; padding: 0.8rem 1.5rem; border-radius: 12px; text-decoration: none; font-weight: 600; margin: 2rem 0; transition: all 0.3s ease; }
+        .review-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(255, 193, 7, 0.4); }
+        
+        /* Footer */
+        .footer { text-align: center; padding: 2rem; color: rgba(255, 255, 255, 0.8); font-size: 0.9rem; }
+
+        /* General Modal Styles */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 2000; backdrop-filter: blur(8px); }
+
+        /* --- NEW SERVICE MODAL WITH STICKY FOOTER --- */
+        .service-modal-content { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: linear-gradient(145deg, #1a1a1a, #0d0d0d); border-radius: 25px; border: 2px solid rgba(255, 193, 7, 0.4); width: 90%; max-width: 800px; height: 90vh; color: var(--light-text); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5); display: flex; flex-direction: column; overflow: hidden; }
+        .service-modal-close-btn { position: absolute; top: 15px; right: 20px; background: rgba(255, 255, 255, 0.1); border: none; font-size: 20px; color: var(--brand-gold); cursor: pointer; width: 40px; height: 40px; border-radius: 50%; transition: all 0.3s ease; z-index: 10; display: flex; align-items: center; justify-content: center; }
+        .service-modal-close-btn:hover { background: var(--brand-gold); color: var(--dark-text); transform: rotate(90deg); }
+        .service-modal-scroll-area { flex-grow: 1; overflow-y: auto; padding: 2rem; }
+        .service-modal-form-container { flex-shrink: 0; padding: 1.5rem 2rem; background: linear-gradient(145deg, #111, #000); border-top: 2px solid rgba(255, 193, 7, 0.4); box-shadow: 0 -5px 20px rgba(0,0,0,0.5); }
+        .slider-container { position: relative; margin-bottom: 2.5rem; }
+        .slider-wrapper { display: flex; transition: transform 0.4s ease-in-out; }
+        .slide { min-width: 100%; box-sizing: border-box; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+        .slider-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: var(--light-text); border: 1px solid rgba(255,255,255,0.2); width: 45px; height: 45px; border-radius: 50%; cursor: pointer; transition: all 0.3s; z-index: 5; font-size: 1.2rem; }
+        .slider-nav:hover { background: var(--brand-gold); color: var(--dark-text); }
+        .slider-nav:disabled { opacity: 0.3; cursor: not-allowed; }
+        #slider-prev { left: -20px; }
+        #slider-next { right: -20px; }
+        .slider-counter { text-align: center; margin-top: 1rem; color: #aaa; font-weight: 600; }
+        .image-wrapper { position: relative; }
+        .image-wrapper img { width: 100%; border-radius: 15px; border: 2px solid rgba(255, 193, 7, 0.3); aspect-ratio: 4 / 3; object-fit: cover; }
+        .image-wrapper span { position: absolute; bottom: 10px; left: 10px; background: rgba(0, 0, 0, 0.7); color: var(--brand-gold); padding: 5px 10px; border-radius: 8px; font-weight: 600; font-size: 0.9rem; }
+        .service-modal-title { color: var(--brand-gold); font-size: 2.2rem; font-weight: 700; margin-bottom: 1rem; text-align: center; }
+        .service-modal-description { color: #e0e0e0; line-height: 1.7; font-size: 1.05rem; margin-bottom: 1rem; text-align: center; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .form-section-title { color: var(--light-text); font-size: 1.5rem; text-align: center; margin-bottom: 1.5rem; font-weight: 600; }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 500; color: #ccc; }
+        .form-group input { width: 100%; padding: 0.85rem; border-radius: 10px; font-size: 1rem; transition: all 0.3s ease; background-color: rgba(0,0,0,0.3); border: 2px solid rgba(255, 193, 7, 0.3); color: var(--light-text); }
+        .form-group input::placeholder { color: #888; }
+        .form-group input:focus { outline: none; border-color: var(--brand-gold); background-color: rgba(0,0,0,0.5); }
+        .submit-btn { width: 100%; padding: 1rem; background: linear-gradient(135deg, var(--brand-gold), #ffb300); color: var(--dark-text); border: none; border-radius: 12px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
+        .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255, 193, 7, 0.3); }
+
+        /* Responsive Styles */
+        @media (max-width: 900px) {
+            #slider-prev { left: 5px; }
+            #slider-next { right: 5px; }
+        }
+        @media (max-width: 768px) {
+            body { padding: 15px 5px; }
+            .container { padding: 0 5px; }
+            .header { padding: 2.5rem 1rem; }
+            .doctor-name { font-size: 2.2rem; }
+            .tagline { font-size: 1.2rem; }
+            .services-grid, .contact-options { grid-template-columns: 1fr; }
+            .about-content { grid-template-columns: 1fr; text-align: center; }
+            .service-modal-content { width: 95vw; max-width: 95vw; height: 85vh; }
+            .service-modal-scroll-area { padding: 1.5rem 1rem 1rem 1rem; }
+            .service-modal-form-container { padding: 1rem; }
+            .slide { grid-template-columns: 1fr; gap: 1rem; }
+            .service-modal-title { font-size: 1.8rem; }
+            #slider-prev { left: -10px; }
+            #slider-next { right: -10px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <img src="https://drmorci.com/img/profile.jpg" alt="Dr. Morci" class="profile-img">
+            <h1 class="doctor-name">Dr. Morci</h1>
+            <p class="tagline">Transformando sonrisas con técnicas de vanguardia en odontología estética, biomimética y biológica.</p>
+        </div>
+
+        <!-- Services Section -->
+        <h2 class="section-title">
+            <i class="fas fa-tooth"></i>
+            Nuestros Servicios
+        </h2>
+        <div class="services-grid">
+            <div class="service-card" style="background-image: url('https://placehold.co/400x280/ffc107/ffffff?text=EJEMPLO')" onclick="openServiceModal('Odontología Estética')">
+                <div class="service-content">
+                    <h3 class="service-title">Odontología Estética</h3>
+                    <p class="service-desc">Consulta para diseño de sonrisa, carillas y blanqueamientos</p>
+                </div>
+            </div>
+            <div class="service-card" style="background-image: url('https://placehold.co/400x280/ffb300/ffffff?text=EJEMPLO')" onclick="openServiceModal('Odontología Biomimética')">
+                <div class="service-content">
+                    <h3 class="service-title">Biomimética</h3>
+                    <p class="service-desc">Consulta para restauraciones que imitan la naturaleza del diente</p>
+                </div>
+            </div>
+            <div class="service-card" style="background-image: url('https://placehold.co/400x280/ffa000/ffffff?text=EJEMPLO')" onclick="openServiceModal('Odontología Biológica')">
+                <div class="service-content">
+                    <h3 class="service-title">Odontología Biológica</h3>
+                    <p class="service-desc">Consulta para tratamientos holísticos y salud integral</p>
+                </div>
+            </div>
+            <div class="service-card" style="background-image: url('https://placehold.co/400x280/ff8f00/ffffff?text=EJEMPLO')" onclick="openServiceModal('Implantes Dentales')">
+                <div class="service-content">
+                    <h3 class="service-title">Implantes Dentales</h3>
+                    <p class="service-desc">Consulta para evaluación de reemplazo de dientes perdidos</p>
+                </div>
+            </div>
+            <div class="service-card" style="background-image: url('https://placehold.co/400x280/ff6f00/ffffff?text=EJEMPLO')" onclick="openServiceModal('Ortodoncia')">
+                <div class="service-content">
+                    <h3 class="service-title">Ortodoncia</h3>
+                    <p class="service-desc">Consulta para evaluación de alineación dental</p>
+                </div>
+            </div>
+            <div class="service-card" style="background-image: url('https://placehold.co/400x280/e65100/ffffff?text=EJEMPLO')" onclick="openServiceModal('Endodoncia')">
+                <div class="service-content">
+                    <h3 class="service-title">Endodoncia</h3>
+                    <p class="service-desc">Consulta para evaluación de tratamientos de conducto</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Section -->
+        <h2 class="section-title">
+            <i class="fas fa-user-md"></i>
+            Acerca del Dr.
+        </h2>
+        <div class="about-card">
+            <div class="about-content">
+                <div class="about-icon"><i class="fas fa-award"></i></div>
+                <div>
+                    <p class="about-text">
+                        Con años de experiencia en odontología de vanguardia, el Dr. Morci se especializa en técnicas estéticas, biomiméticas y biológicas que transforman no solo sonrisas, sino vidas completas. Como conferencista reconocido a nivel nacional e internacional, combina la excelencia clínica con la innovación constante para ofrecer los mejores resultados a sus pacientes.
+                    </p>
+                    <div class="about-highlights">
+                        <div class="highlight-item"><div class="highlight-icon"><i class="fas fa-graduation-cap"></i></div><div class="highlight-text">Especialista Certificado</div></div>
+                        <div class="highlight-item"><div class="highlight-icon"><i class="fas fa-globe"></i></div><div class="highlight-text">Conferencista Internacional</div></div>
+                        <div class="highlight-item"><div class="highlight-icon"><i class="fas fa-microscope"></i></div><div class="highlight-text">Tecnología Avanzada</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <h2 class="section-title">
+            <i class="fas fa-calendar-check"></i>
+            Agenda tu Cita
+        </h2>
+        <div class="contact-options">
+            <div class="contact-card primary" onclick="openServiceModal('Consulta General')">
+                <div class="contact-icon"><i class="fas fa-comments"></i></div>
+                <h3>Chat Directo</h3>
+                <p>Agenda tu consulta por chat</p>
+            </div>
+            <a href="tel:+50767272029" class="contact-card">
+                <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                <h3>Teléfono</h3>
+                <p>+507 6727-2029</p>
+            </a>
+            <a href="mailto:doctor@drmorci.com" class="contact-card">
+                <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                <h3>Email</h3>
+                <p>Contacto directo</p>
+            </a>
+        </div>
+    </div>
+
+    <!-- Reviews Section -->
+    <div class="reviews-section">
+        <div class="container"><h2 class="section-title"><i class="fas fa-star"></i>Lo que dicen nuestros pacientes</h2></div>
+        <div class="reviews-carousel">
+            <div class="reviews-track">
+                <!-- Example reviews (doubled for loop) -->
+                <div class="review-card"><div class="review-header"><div class="reviewer-avatar">AC</div><div class="reviewer-info"><h4>Ana Cristina</h4><div class="review-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div></div></div><p class="review-text">Dr. Morci es increíble, te hace sentir cómodo y explica cada paso del tratamiento a realizar. Su paciencia y dedicación hacen la diferencia...</p></div>
+                <div class="review-card"><div class="review-header"><div class="reviewer-avatar">PJ</div><div class="reviewer-info"><h4>Pilar Jaen</h4><div class="review-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div></div></div><p class="review-text">Fantástica!!! Me siento muy tranquila saber que mi salud está en tan excelentes manos, gracias Dr. Morci!</p></div>
+                <div class="review-card"><div class="review-header"><div class="reviewer-avatar">NS</div><div class="reviewer-info"><h4>Neomalda Saucedo</h4><div class="review-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div></div></div><p class="review-text">Excelente servicio y atención profesional. Altamente recomendado.</p></div>
+                <div class="review-card"><div class="review-header"><div class="reviewer-avatar">MP</div><div class="reviewer-info"><h4>Mary Perez</h4><div class="review-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div></div></div><p class="review-text">Mi sonrisa nunca se vio mejor! recomiendo al doc 100% 🥹</p></div>
+                <div class="review-card"><div class="review-header"><div class="reviewer-avatar">AC</div><div class="reviewer-info"><h4>Ana Cristina</h4><div class="review-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div></div></div><p class="review-text">Dr. Morci es increíble, te hace sentir cómodo y explica cada paso del tratamiento a realizar. Su paciencia y dedicación hacen la diferencia...</p></div>
+                <div class="review-card"><div class="review-header"><div class="reviewer-avatar">PJ</div><div class="reviewer-info"><h4>Pilar Jaen</h4><div class="review-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div></div></div><p class="review-text">Fantástica!!! Me siento muy tranquila saber que mi salud está en tan excelentes manos, gracias Dr. Morci!</p></div>
+                <div class="review-card"><div class="review-header"><div class="reviewer-avatar">NS</div><div class="reviewer-info"><h4>Neomalda Saucedo</h4><div class="review-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div></div></div><p class="review-text">Excelente servicio y atención profesional. Altamente recomendado.</p></div>
+                <div class="review-card"><div class="review-header"><div class="reviewer-avatar">MP</div><div class="reviewer-info"><h4>Mary Perez</h4><div class="review-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div></div></div><p class="review-text">Mi sonrisa nunca se vio mejor! recomiendo al doc 100% 🥹</p></div>
+            </div>
+        </div>
+    </div>
+        
+    <div class="container">
+        <div style="text-align: center;">
+            <a href="https://search.google.com/local/writereview?placeid=ChIJqaJFoKCprI8R8LvyyPkpQDs" target="_blank" class="review-cta">
+                <i class="fas fa-star"></i>
+                ¿Te gustó nuestro servicio? ¡Déjanos una reseña!
+            </a>
+        </div>
+        <div class="footer">
+            <p>© 2025 Dr. Morci. Todos los derechos reservados.</p>
+            <p>Odontología de Excelencia en Panamá</p>
+        </div>
+    </div>
+
+    <!-- Service Detail Modal with Sticky Footer -->
+    <div id="serviceDetailModal" class="modal">
+        <div class="service-modal-content">
+            <button class="service-modal-close-btn" onclick="closeServiceModal()">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <!-- Scrollable Area -->
+            <div class="service-modal-scroll-area">
+                <div class="slider-container">
+                    <div class="slider-wrapper" id="slider-wrapper"></div>
+                    <button id="slider-prev" class="slider-nav"><i class="fas fa-chevron-left"></i></button>
+                    <button id="slider-next" class="slider-nav"><i class="fas fa-chevron-right"></i></button>
+                    <div class="slider-counter" id="slider-counter"></div>
+                </div>
+                <div class="service-modal-details">
+                    <h2 id="serviceModalTitle" class="service-modal-title"></h2>
+                    <p id="serviceModalDescription" class="service-modal-description"></p>
+                </div>
+            </div>
+
+            <!-- Sticky Form Area -->
+            <div class="service-modal-form-container">
+                <h3 class="form-section-title">Da el siguiente paso: Agenda tu cita</h3>
+                <form id="appointmentForm">
+                    <div class="form-group">
+                        <label for="name">Tu nombre *</label>
+                        <input type="text" id="name" name="name" required placeholder="Ingresa tu nombre">
+                    </div>
+                    <input type="hidden" id="service" name="service" value="">
+                    <button type="submit" class="submit-btn">
+                        <i class="fab fa-whatsapp"></i>
+                        Agendar por WhatsApp
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- DATA FOR SERVICE MODALS ---
+        // **REPLACE PLACEHOLDER IMAGES HERE FOR EACH SERVICE**
+        const servicesData = {
+            'Odontología Estética': {
+                title: 'Odontología Estética Avanzada',
+                description: 'Transformamos tu sonrisa con un enfoque artístico y científico. A través de un análisis detallado, creamos un Diseño de Sonrisa personalizado usando carillas de porcelana, blanqueamientos y contorneado estético para lograr resultados espectaculares y naturales.',
+                cases: [
+                    { before: 'https://placehold.co/400x300/333/ccc?text=Estética+1+-+Antes', after: 'https://placehold.co/400x300/ffc107/000?text=Estética+1+-+Después' },
+                    { before: 'https://placehold.co/400x300/555/eee?text=Estética+2+-+Antes', after: 'https://placehold.co/400x300/ffb300/000?text=Estética+2+-+Después' }
+                ]
+            },
+            'Odontología Biomimética': {
+                title: 'Restauraciones con Biomimética',
+                description: 'La odontología biomimética se enfoca en preservar tu estructura dental sana. Imitamos la naturaleza para restaurar dientes dañados, usando materiales que replican las propiedades del esmalte y la dentina para restauraciones más fuertes, duraderas y conservadoras.',
+                 cases: [ { before: 'https://placehold.co/400x300/333/ccc?text=Biomimética+-+Antes', after: 'https://placehold.co/400x300/ffc107/000?text=Biomimética+-+Después' } ]
+            },
+            'Odontología Biológica': {
+                title: 'Odontología Biológica Holística',
+                description: 'Consideramos la salud de tu boca como una parte integral de tu bienestar. Usamos materiales biocompatibles, evitamos metales tóxicos como el mercurio y aplicamos protocolos seguros para su remoción, promoviendo tu salud a largo plazo.',
+                cases: [ { before: 'https://placehold.co/400x300/333/ccc?text=Biológica+-+Antes', after: 'https://placehold.co/400x300/ffc107/000?text=Biológica+-+Después' } ]
+            },
+            'Implantes Dentales': {
+                title: 'Implantes Dentales de Zirconio',
+                description: 'Reemplaza dientes perdidos con la opción más avanzada y biocompatible: implantes de zirconio. Son una alternativa libre de metal, estéticamente superior y con excelente integración al hueso. Recupera la función y la confianza con una solución duradera.',
+                cases: [ { before: 'https://placehold.co/400x300/333/ccc?text=Implante+-+Antes', after: 'https://placehold.co/400x300/ffc107/000?text=Implante+-+Después' } ]
+            },
+            'Ortodoncia': {
+                title: 'Ortodoncia Invisible y Moderna',
+                description: 'Alinea tus dientes de forma discreta y cómoda con nuestros sistemas de ortodoncia invisible. Realizamos un escaneo 3D para planificar cada movimiento con precisión, ofreciéndote un tratamiento predecible y altamente estético.',
+                cases: [ { before: 'https://placehold.co/400x300/333/ccc?text=Ortodoncia+-+Antes', after: 'https://placehold.co/400x300/ffc107/000?text=Ortodoncia+-+Después' } ]
+            },
+            'Endodoncia': {
+                title: 'Endodoncia Microscópica',
+                description: 'Salvando dientes con la máxima precisión. Usamos microscopios dentales para realizar tratamientos de conducto con una visualización magnificada, lo que nos permite limpiar y sellar el diente de manera más efectiva, aumentando drásticamente la tasa de éxito.',
+                cases: [ { before: 'https://placehold.co/400x300/333/ccc?text=Endodoncia+-+Antes', after: 'https://placehold.co/400x300/ffc107/000?text=Endodoncia+-+Después' } ]
+            },
+            'Consulta General': {
+                title: 'Agenda tu Consulta Inicial',
+                description: 'Da el primer paso hacia la sonrisa de tus sueños. En tu primera consulta, realizaremos una evaluación completa, escucharemos tus inquietudes y te presentaremos un plan de tratamiento personalizado. Completa el formulario para coordinar tu cita.',
+                cases: [ { before: 'https://placehold.co/400x300/333/ccc?text=Sonrisa+Sana', after: 'https://placehold.co/400x300/ffc107/000?text=Sonrisa+Ideal' } ]
+            }
+        };
+
+        // --- MODAL AND SLIDER LOGIC ---
+        const modal = document.getElementById('serviceDetailModal');
+        const sliderWrapper = document.getElementById('slider-wrapper');
+        const prevButton = document.getElementById('slider-prev');
+        const nextButton = document.getElementById('slider-next');
+        const sliderCounter = document.getElementById('slider-counter');
+        const scrollArea = document.querySelector('.service-modal-scroll-area');
+        let currentSlide = 0;
+        let totalSlides = 0;
+
+        function openServiceModal(serviceName) {
+            const serviceData = servicesData[serviceName] || servicesData['Consulta General'];
+            document.getElementById('serviceModalTitle').innerText = serviceData.title;
+            document.getElementById('serviceModalDescription').innerText = serviceData.description;
+            document.getElementById('service').value = serviceName;
+            sliderWrapper.innerHTML = '';
+            serviceData.cases.forEach(caseItem => {
+                const slide = document.createElement('div');
+                slide.className = 'slide';
+                slide.innerHTML = `
+                    <div class="image-wrapper">
+                        <img src="${caseItem.before}" alt="Antes del tratamiento">
+                        <span>Antes</span>
+                    </div>
+                    <div class="image-wrapper">
+                        <img src="${caseItem.after}" alt="Después del tratamiento">
+                        <span>Después</span>
+                    </div>`;
+                sliderWrapper.appendChild(slide);
+            });
+            currentSlide = 0;
+            totalSlides = serviceData.cases.length;
+            scrollArea.scrollTop = 0;
+            updateSlider();
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeServiceModal() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function updateSlider() {
+            sliderWrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
+            if (totalSlides > 1) {
+                sliderCounter.textContent = `Caso ${currentSlide + 1} de ${totalSlides}`;
+                sliderCounter.style.display = 'block';
+                prevButton.style.display = 'block';
+                nextButton.style.display = 'block';
+            } else {
+                sliderCounter.style.display = 'none';
+                prevButton.style.display = 'none';
+                nextButton.style.display = 'none';
+            }
+            prevButton.disabled = currentSlide === 0;
+            nextButton.disabled = currentSlide === totalSlides - 1;
+        }
+
+        prevButton.addEventListener('click', () => { if (currentSlide > 0) { currentSlide--; updateSlider(); } });
+        nextButton.addEventListener('click', () => { if (currentSlide < totalSlides - 1) { currentSlide++; updateSlider(); } });
+        modal.addEventListener('click', (e) => { if (e.target === modal) closeServiceModal(); });
+
+        // --- FORM SUBMISSION ---
+        document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            if (!data.name || !data.service) { alert('Por favor completa todos los campos obligatorios.'); return; }
+            let whatsappMessage = `¡Hola Dr. Morci! 👋\n\nMi nombre es *${data.name}* y me interesa agendar una consulta sobre *${data.service}*.\n\n¿Cuándo tendría disponibilidad? ¡Gracias! 🙏\n\n_Enviado desde drmorci.com_`;
+            const whatsappNumber = '50767272029';
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+            window.open(whatsappUrl, '_blank');
+            closeServiceModal();
+            this.reset();
+        });
+    </script>
+</body>
+</html>
