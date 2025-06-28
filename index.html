@@ -122,7 +122,7 @@
         .slider-counter { text-align: center; margin-top: 1rem; color: #aaa; font-weight: 600; }
         .image-wrapper { position: relative; }
         .image-wrapper img { width: 100%; border-radius: 15px; border: 2px solid rgba(255, 193, 7, 0.3); aspect-ratio: 4 / 3; object-fit: cover; }
-        .image-wrapper span { position: absolute; bottom: 10px; left: 10px; background: rgba(0, 0, 0, 0.7); color: var(--brand-gold); padding: 5px 10px; border-radius: 8px; font-weight: 600; font-size: 0.9rem; }
+        .image-wrapper span { position: absolute; bottom: 10px; left: 10px; background: rgba(0, 0, 0, 0.7); color: var(--brand-gold); padding: 5px 10px; border-radius: 8px; font-weight: 600; font-size: 0.9rem; z-index: 3; }
         .form-section-title { color: var(--light-text); font-size: 1.5rem; text-align: center; margin-bottom: 0.5rem; font-weight: 600; }
         .form-section-desc { color: #ccc; font-size: 0.95rem; text-align: center; margin-bottom: 1.5rem; max-width: 90%; margin-left: auto; margin-right: auto; }
         .form-group { margin-bottom: 1rem; }
@@ -146,7 +146,41 @@
             .service-modal-content { width: 95vw; max-width: 95vw; height: 85vh; }
             .service-modal-scroll-area { padding: 1.5rem 1rem 0 1rem; }
             .service-modal-form-container { padding: 1rem; }
-            .slide { grid-template-columns: 1fr; gap: 1rem; }
+            
+            .slide {
+                grid-template-columns: 1fr;
+                gap: 0; /* Remove gap */
+                position: relative; /* For instruction text */
+                cursor: pointer;
+            }
+            .slide .image-wrapper:last-child {
+                display: none;
+            }
+            .slide.show-after .image-wrapper:first-child {
+                display: none;
+            }
+            .slide.show-after .image-wrapper:last-child {
+                display: block;
+            }
+            .slide::after {
+                content: "Toca para ver Después";
+                position: absolute;
+                bottom: 15px;
+                right: 10px;
+                background: rgba(0, 0, 0, 0.75);
+                color: white;
+                padding: 6px 12px;
+                border-radius: 8px;
+                font-size: 0.75rem;
+                font-weight: 500;
+                z-index: 5;
+                pointer-events: none;
+                opacity: 0.7;
+            }
+            .slide.show-after::after {
+                content: "Toca para ver Antes";
+            }
+            
             #slider-prev, #slider-next { width: 40px; height: 40px; font-size: 1rem; }
             #slider-prev { left: -5px; }
             #slider-next { right: -5px; }
@@ -202,8 +236,13 @@
         <div class="service-modal-content">
             <button class="service-modal-close-btn" onclick="closeServiceModal()"><i class="fas fa-times"></i></button>
 
-            <!-- Scrollable Area - Content now removed from here -->
+            <!-- Scrollable Area -->
             <div class="service-modal-scroll-area">
+                <!-- ===== NEW: Placeholder Image Container ===== -->
+                <div id="modal-placeholder-image-container" style="display: none; text-align: center; margin-bottom: 2rem;">
+                    <img src="https://drmorci.com/img/social-banner.jpg" alt="Dr. Morci Banner" style="width: 100%; max-width: 400px; border-radius: 15px; border: 2px solid rgba(255, 193, 7, 0.3);">
+                </div>
+
                 <div class="slider-container" id="slider-container">
                     <div class="slider-wrapper" id="slider-wrapper"></div>
                     <button id="slider-prev" class="slider-nav"><i class="fas fa-chevron-left"></i></button>
@@ -274,27 +313,49 @@
         const scrollArea = document.querySelector('.service-modal-scroll-area');
         const formTitle = document.getElementById('formSectionTitle');
         const formDescription = document.getElementById('formSectionDescription');
+        const placeholderImageContainer = document.getElementById('modal-placeholder-image-container'); // Get placeholder
 
         let currentSlide = 0;
         let totalSlides = 0;
+        let imageToggleInterval = null; // ===== NEW: Variable for the auto-toggle timer =====
+
+        // ===== NEW: Function to stop the automatic image toggling =====
+        function stopImageToggle() {
+            if (imageToggleInterval) {
+                clearInterval(imageToggleInterval);
+                imageToggleInterval = null;
+            }
+        }
+
+        // ===== NEW: Function to start the automatic image toggling on the current slide =====
+        function startImageToggle() {
+            stopImageToggle(); // Stop any existing timer first
+            // Only run on mobile screens
+            if (window.matchMedia("(max-width: 768px)").matches) {
+                const currentSlideElement = sliderWrapper.children[currentSlide];
+                if (currentSlideElement) {
+                    imageToggleInterval = setInterval(() => {
+                        currentSlideElement.classList.toggle('show-after');
+                    }, 3000); // Toggle every 3 seconds
+                }
+            }
+        }
 
         function openServiceModal(serviceName) {
             const serviceData = servicesData[serviceName];
             document.getElementById('service').value = serviceName;
 
-            // Conditional logic for modal content
             if (serviceName === 'Consulta General') {
-                // Special layout for "Chat Directo"
-                sliderContainer.style.display = 'none'; // Hide the slider
+                sliderContainer.style.display = 'none';
+                placeholderImageContainer.style.display = 'block'; // Show placeholder
                 formTitle.textContent = 'Agenda tu Consulta Inicial';
-                formDescription.textContent = serviceData.description; // Use the long description here
+                formDescription.textContent = serviceData.description;
             } else {
-                // Standard layout for service cards
-                sliderContainer.style.display = 'block'; // Show the slider
+                sliderContainer.style.display = 'block';
+                placeholderImageContainer.style.display = 'none'; // Hide placeholder
                 formTitle.textContent = `Agenda tu cita de ${serviceName}`;
                 formDescription.textContent = serviceData.shortDesc;
 
-                // Populate slider
                 sliderWrapper.innerHTML = '';
                 serviceData.cases.forEach(caseItem => {
                     const slide = document.createElement('div');
@@ -306,9 +367,10 @@
                 currentSlide = 0;
                 totalSlides = serviceData.cases.length;
                 updateSlider();
+                startImageToggle(); // Start the toggling for the first slide
             }
 
-            scrollArea.scrollTop = 0; // Reset scroll for new content
+            scrollArea.scrollTop = 0;
             modal.style.display = 'block';
             document.body.style.overflow = 'hidden';
         }
@@ -316,6 +378,7 @@
         function closeServiceModal() {
             modal.style.display = 'none';
             document.body.style.overflow = 'auto';
+            stopImageToggle(); // Stop the timer when modal is closed
         }
 
         function updateSlider() {
@@ -334,9 +397,33 @@
             nextButton.disabled = currentSlide === totalSlides - 1;
         }
 
-        prevButton.addEventListener('click', () => { if (currentSlide > 0) { currentSlide--; updateSlider(); } });
-        nextButton.addEventListener('click', () => { if (currentSlide < totalSlides - 1) { currentSlide++; updateSlider(); } });
+        prevButton.addEventListener('click', () => { 
+            if (currentSlide > 0) { 
+                currentSlide--; 
+                updateSlider(); 
+                startImageToggle(); // Restart toggle for new slide
+            } 
+        });
+
+        nextButton.addEventListener('click', () => { 
+            if (currentSlide < totalSlides - 1) { 
+                currentSlide++; 
+                updateSlider(); 
+                startImageToggle(); // Restart toggle for new slide
+            } 
+        });
+
         modal.addEventListener('click', (e) => { if (e.target === modal) closeServiceModal(); });
+
+        sliderWrapper.addEventListener('click', (e) => {
+            if (window.matchMedia("(max-width: 768px)").matches) {
+                const slide = e.target.closest('.slide');
+                if (slide) {
+                    stopImageToggle(); // Stop auto-toggle on manual tap
+                    slide.classList.toggle('show-after');
+                }
+            }
+        });
 
         document.getElementById('appointmentForm').addEventListener('submit', function(e) {
             e.preventDefault();
