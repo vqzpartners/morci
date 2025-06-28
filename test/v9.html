@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Morci - Odontología Estética, Biomimética y Biológica en Panamá</title>
+    
+    <!-- Meta Tags -->
+    <meta name="description" content="Transformando sonrisas con Odontología Estética, Biomimética y Biológica en Panamá. Especialista en diseño de sonrisa y tratamientos dentales avanzados.">
+    <meta name="keywords" content="odontología estética panamá, dentista panamá, biomimética dental, odontología biológica, diseño de sonrisa, carillas dentales, blanqueamiento dental, implantes dentales panamá, dentista ciudad de panamá">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <meta name="theme-color" content="#000000">
+
+    <style>
+        :root {
+            --brand-gold: #ffc107;
+            --dark-bg: #000;
+            --light-text: #fff;
+            --dark-text: #000;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--dark-bg); color: var(--light-text); min-height: 100vh; padding: 20px; }
+        .container { max-width: 900px; margin: 0 auto; }
+
+        /* Header Styles */
+        .header { background: linear-gradient(135deg, rgba(255, 193, 7, 0.95), rgba(255, 179, 0, 0.9)); backdrop-filter: blur(20px); border-radius: 30px; padding: 3rem 2rem; margin-bottom: 3rem; text-align: center; box-shadow: 0 25px 50px rgba(255, 193, 7, 0.4); border: 1px solid rgba(255, 193, 7, 0.3); position: relative; overflow: hidden; }
+        .profile-img { width: 200px; height: 200px; border-radius: 50%; margin: 0 auto 2rem; display: block; border: 8px solid var(--dark-bg); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6); position: relative; z-index: 2; }
+        .doctor-name { font-size: 3rem; font-weight: 800; color: var(--dark-text); margin-bottom: 1rem; position: relative; z-index: 2; }
+        .tagline { font-size: 1.4rem; color: #333; line-height: 1.4; max-width: 600px; margin: 0 auto; font-weight: 500; position: relative; z-index: 2; }
+
+        /* Section & Card Styles */
+        .section-title { color: var(--brand-gold); font-size: 1.3rem; font-weight: 600; margin: 3rem 0 1.5rem 0; display: flex; align-items: center; gap: 0.75rem; }
+        .section-title::after { content: ""; height: 2px; background: linear-gradient(90deg, var(--brand-gold), transparent); flex-grow: 1; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 2rem; }
+        .service-card { background-size: cover; background-position: center; border-radius: 20px; height: 280px; position: relative; transition: all 0.3s ease; cursor: pointer; overflow: hidden; }
+        .service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.8) 100%); border-radius: 20px; transition: all 0.3s ease; }
+        .service-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(255, 193, 7, 0.2); }
+        .service-card:hover::before { background: linear-gradient( to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.9) 100% ); }
+        .service-content { position: absolute; bottom: 0; left: 0; right: 0; padding: 2rem; z-index: 2; }
+        .service-title { font-size: 1.3rem; font-weight: 700; color: var(--brand-gold); margin-bottom: 0.8rem; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); }
+        .service-desc { font-size: 1rem; color: var(--light-text); line-height: 1.5; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); }
+
+        /* General Modal Styles */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 2000; backdrop-filter: blur(8px); }
+
+        /* Service Detail Modal Styles */
+        .service-modal-content { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: linear-gradient(145deg, #1a1a1a, #0d0d0d); border-radius: 25px; border: 2px solid rgba(255, 193, 7, 0.4); padding: 2rem; width: 90%; max-width: 800px; max-height: 90vh; overflow-y: auto; color: var(--light-text); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5); }
+        .service-modal-close-btn { position: absolute; top: 15px; right: 20px; background: rgba(255, 255, 255, 0.1); border: none; font-size: 20px; color: var(--brand-gold); cursor: pointer; width: 40px; height: 40px; border-radius: 50%; transition: all 0.3s ease; z-index: 10; display: flex; align-items: center; justify-content: center; }
+        .service-modal-close-btn:hover { background: var(--brand-gold); color: var(--dark-text); transform: rotate(90deg); }
+
+        /* NEW: Slider Styles */
+        .slider-container { position: relative; margin-bottom: 2.5rem; }
+        .slider-wrapper { display: flex; transition: transform 0.4s ease-in-out; }
+        .slide { min-width: 100%; box-sizing: border-box; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+        .slider-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: var(--light-text); border: 1px solid rgba(255,255,255,0.2); width: 45px; height: 45px; border-radius: 50%; cursor: pointer; transition: all 0.3s; z-index: 5; font-size: 1.2rem; }
+        .slider-nav:hover { background: var(--brand-gold); color: var(--dark-text); }
+        .slider-nav:disabled { opacity: 0.3; cursor: not-allowed; }
+        #slider-prev { left: -20px; }
+        #slider-next { right: -20px; }
+        .slider-counter { text-align: center; margin-top: 1rem; color: #aaa; font-weight: 600; }
+        
+        .image-wrapper { position: relative; }
+        .image-wrapper img { width: 100%; border-radius: 15px; border: 2px solid rgba(255, 193, 7, 0.3); aspect-ratio: 4 / 3; object-fit: cover; }
+        .image-wrapper span { position: absolute; bottom: 10px; left: 10px; background: rgba(0, 0, 0, 0.7); color: var(--brand-gold); padding: 5px 10px; border-radius: 8px; font-weight: 600; font-size: 0.9rem; }
+
+        /* Modal Content Details */
+        .service-modal-title { color: var(--brand-gold); font-size: 2.2rem; font-weight: 700; margin-bottom: 1rem; text-align: center; }
+        .service-modal-description { color: #e0e0e0; line-height: 1.7; font-size: 1.05rem; margin-bottom: 2.5rem; text-align: center; max-width: 600px; margin-left: auto; margin-right: auto; }
+
+        /* Modal Form */
+        .service-modal-form-container { background: rgba(255, 193, 7, 0.05); padding: 2rem; border-radius: 15px; border-top: 2px solid rgba(255, 193, 7, 0.2); }
+        .form-section-title { color: var(--light-text); font-size: 1.5rem; text-align: center; margin-bottom: 1.5rem; font-weight: 600; }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 500; color: #ccc; }
+        .form-group input { width: 100%; padding: 0.85rem; border-radius: 10px; font-size: 1rem; transition: all 0.3s ease; background-color: rgba(0,0,0,0.3); border: 2px solid rgba(255, 193, 7, 0.3); color: var(--light-text); }
+        .form-group input::placeholder { color: #888; }
+        .form-group input:focus { outline: none; border-color: var(--brand-gold); background-color: rgba(0,0,0,0.5); }
+        .submit-btn { width: 100%; padding: 1rem; background: linear-gradient(135deg, var(--brand-gold), #ffb300); color: var(--dark-text); border: none; border-radius: 12px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
+        .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255, 193, 7, 0.3); }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            #slider-prev { left: 5px; }
+            #slider-next { right: 5px; }
+        }
+        
+        @media (max-width: 768px) {
+            body { padding: 15px 5px; }
+            .container { padding: 0 5px; }
+            .header { padding: 2.5rem 1rem; }
+            .doctor-name { font-size: 2.2rem; }
+            .tagline { font-size: 1.2rem; }
+            .services-grid { grid-template-columns: 1fr; }
+            .service-modal-content { padding: 1.5rem 1rem; width: 95vw; max-width: 95vw; }
+            .slide { grid-template-columns: 1fr; gap: 1rem; }
+            .service-modal-title { font-size: 1.8rem; }
+            .service-modal-description { font-size: 1rem; }
+            #slider-prev { left: -10px; }
+            #slider-next { right: -10px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <img src="https://drmorci.com/img/profile.jpg" alt="Dr. Morci" class="profile-img">
+            <h1 class="doctor-name">Dr. Morci</h1>
+            <p class="tagline">Transformando sonrisas con técnicas de vanguardia en odontología estética, biomimética y biológica.</p>
+        </div>
+
+        <!-- Services Section -->
+        <h2 class="section-title">
+            <i class="fas fa-tooth"></i>
+            Nuestros Servicios
+        </h2>
+        
+        <div class="services-grid">
+            <!-- The working example with the new slider modal -->
+            <div class="service-card" style="background-image: url('https://placehold.co/400x280/ffc107/ffffff?text=EJEMPLO')" onclick="openServiceModal('Odontología Estética')">
+                <div class="service-content">
+                    <h3 class="service-title">Odontología Estética</h3>
+                    <p class="service-desc">Consulta para diseño de sonrisa, carillas y blanqueamientos</p>
+                </div>
+            </div>
+            
+            <!-- Commented out other services to keep the example clean -->
+            <!-- 
+            <div class="service-card" style="background-image: url('https://placehold.co/400x280/ffb300/ffffff?text=EJEMPLO')" onclick="openServiceModal('Odontología Biomimética')">
+                ...
+            </div>
+            ... and so on for the other cards ...
+            -->
+        </div>
+    </div>
+
+    <!-- Service Detail Modal with Slider -->
+    <div id="serviceDetailModal" class="modal">
+        <div class="service-modal-content">
+            <button class="service-modal-close-btn" onclick="closeServiceModal()">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <!-- Slider Structure -->
+            <div class="slider-container">
+                <div class="slider-wrapper" id="slider-wrapper">
+                    <!-- Slides will be injected here by JavaScript -->
+                </div>
+                <button id="slider-prev" class="slider-nav"><i class="fas fa-chevron-left"></i></button>
+                <button id="slider-next" class="slider-nav"><i class="fas fa-chevron-right"></i></button>
+                <div class="slider-counter" id="slider-counter"></div>
+            </div>
+
+            <div class="service-modal-details">
+                <h2 id="serviceModalTitle" class="service-modal-title"></h2>
+                <p id="serviceModalDescription" class="service-modal-description"></p>
+            </div>
+
+            <div class="service-modal-form-container">
+                <!-- Gender-neutral text updated here -->
+                <h3 class="form-section-title">Da el siguiente paso: Agenda tu cita</h3>
+                <form id="appointmentForm">
+                    <div class="form-group">
+                        <label for="name">Nombre Completo *</label>
+                        <input type="text" id="name" name="name" required placeholder="Tu nombre y apellido">
+                    </div>
+                    <input type="hidden" id="service" name="service" value="">
+                    
+                    <button type="submit" class="submit-btn">
+                        <i class="fab fa-whatsapp"></i>
+                        Agendar por WhatsApp
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Data for each service modal. 
+        // **REPLACE PLACEHOLDER IMAGES HERE**
+        const servicesData = {
+            'Odontología Estética': {
+                title: 'Odontología Estética Avanzada',
+                description: 'Transformamos tu sonrisa con un enfoque artístico y científico. A través de un análisis detallado, creamos un Diseño de Sonrisa personalizado usando carillas de porcelana, blanqueamientos y contorneado estético para lograr resultados espectaculares y naturales.',
+                // NEW: Array of cases for the slider
+                cases: [
+                    { 
+                        before: 'https://placehold.co/400x300/333/ccc?text=Caso+1+-+Antes', 
+                        after: 'https://placehold.co/400x300/ffc107/000?text=Caso+1+-+Después' 
+                    },
+                    { 
+                        before: 'https://placehold.co/400x300/555/eee?text=Caso+2+-+Antes', 
+                        after: 'https://placehold.co/400x300/ffb300/000?text=Caso+2+-+Después' 
+                    },
+                    { 
+                        before: 'https://placehold.co/400x300/222/ddd?text=Caso+3+-+Antes', 
+                        after: 'https://placehold.co/400x300/ffa000/000?text=Caso+3+-+Después' 
+                    }
+                ]
+            },
+            // You can add other services here following the same structure
+            'Consulta General': {
+                title: 'Agenda tu Consulta Inicial',
+                description: 'Da el primer paso hacia la sonrisa de tus sueños. En tu primera consulta, realizaremos una evaluación completa, escucharemos tus inquietudes y te presentaremos un plan de tratamiento personalizado. Completa el formulario para coordinar tu cita.',
+                cases: [
+                    { 
+                        before: 'https://placehold.co/400x300/333/ccc?text=Sonrisa+Sana', 
+                        after: 'https://placehold.co/400x300/ffc107/000?text=Sonrisa+Ideal' 
+                    }
+                ]
+            }
+        };
+
+        // --- Slider and Modal Logic ---
+        const modal = document.getElementById('serviceDetailModal');
+        const sliderWrapper = document.getElementById('slider-wrapper');
+        const prevButton = document.getElementById('slider-prev');
+        const nextButton = document.getElementById('slider-next');
+        const sliderCounter = document.getElementById('slider-counter');
+
+        let currentSlide = 0;
+        let totalSlides = 0;
+
+        function openServiceModal(serviceName) {
+            const serviceData = servicesData[serviceName] || servicesData['Consulta General'];
+            
+            // Populate text content
+            document.getElementById('serviceModalTitle').innerText = serviceData.title;
+            document.getElementById('serviceModalDescription').innerText = serviceData.description;
+            document.getElementById('service').value = serviceName;
+
+            // Clear previous slides
+            sliderWrapper.innerHTML = '';
+
+            // Create and inject new slides
+            serviceData.cases.forEach(caseItem => {
+                const slide = document.createElement('div');
+                slide.className = 'slide';
+                slide.innerHTML = `
+                    <div class="image-wrapper">
+                        <img src="${caseItem.before}" alt="Antes del tratamiento">
+                        <span>Antes</span>
+                    </div>
+                    <div class="image-wrapper">
+                        <img src="${caseItem.after}" alt="Después del tratamiento">
+                        <span>Después</span>
+                    </div>
+                `;
+                sliderWrapper.appendChild(slide);
+            });
+
+            // Initialize slider state
+            currentSlide = 0;
+            totalSlides = serviceData.cases.length;
+            updateSlider();
+
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeServiceModal() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function updateSlider() {
+            sliderWrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            // Update counter
+            if (totalSlides > 1) {
+                sliderCounter.textContent = `Caso ${currentSlide + 1} de ${totalSlides}`;
+                sliderCounter.style.display = 'block';
+                prevButton.style.display = 'block';
+                nextButton.style.display = 'block';
+            } else {
+                sliderCounter.style.display = 'none';
+                prevButton.style.display = 'none';
+                nextButton.style.display = 'none';
+            }
+
+            // Update nav buttons
+            prevButton.disabled = currentSlide === 0;
+            nextButton.disabled = currentSlide === totalSlides - 1;
+        }
+
+        prevButton.addEventListener('click', () => {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlider();
+            }
+        });
+
+        nextButton.addEventListener('click', () => {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                updateSlider();
+            }
+        });
+
+        // Close modal listeners
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeServiceModal();
+        });
+
+        // --- Form Submission Logic ---
+        document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            if (!data.name || !data.service) {
+                alert('Por favor completa todos los campos obligatorios');
+                return;
+            }
+
+            // A more human-like message
+            let whatsappMessage = `¡Hola Dr. Morci! 👋\n\nMi nombre es *${data.name}* y me interesa agendar una consulta sobre *${data.service}*.\n\n¿Cuándo tendría disponibilidad? ¡Gracias! 🙏\n\n_Enviado desde drmorci.com_`;
+            const whatsappNumber = '50767272029'; // Your number
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+            
+            window.open(whatsappUrl, '_blank');
+            closeServiceModal();
+            this.reset();
+        });
+    </script>
+</body>
+</html>
