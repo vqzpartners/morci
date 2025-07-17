@@ -752,14 +752,19 @@
             background: rgba(0, 0, 0, 0.7); 
             z-index: 2000; 
             backdrop-filter: blur(8px);
-            animation: fadeInUp 0.3s ease-out;
+            opacity: 0;
+            transition: opacity 0.3s ease-out;
+        }
+
+        .modal.show {
+            opacity: 1;
         }
 
         .service-modal-content { 
             position: absolute; 
             top: 50%; 
             left: 50%; 
-            transform: translate(-50%, -50%); 
+            transform: translate(-50%, -50%) scale(0.9); 
             background: linear-gradient(145deg, #1a1a1a, #0d0d0d); 
             border-radius: 25px; 
             border: 2px solid rgba(255, 193, 7, 0.4); 
@@ -771,7 +776,11 @@
             display: flex; 
             flex-direction: column; 
             overflow: hidden;
-            animation: scaleIn 0.4s ease-out;
+            transition: transform 0.3s ease-out;
+        }
+
+        .modal.show .service-modal-content {
+            transform: translate(-50%, -50%) scale(1);
         }
 
         .service-modal-close-btn { 
@@ -1203,7 +1212,7 @@
         </a>
         <a href="#contacto" class="nav-item" data-section="contacto">
             <i class="fas fa-calendar-check"></i>
-            <span>Contacto</span>
+            <span>Citas</span>
         </a>
     </nav>
 
@@ -1458,11 +1467,19 @@
             scrollArea.scrollTop = 0;
             modal.style.display = 'block';
             document.body.style.overflow = 'hidden';
+            
+            // Trigger smooth animation
+            setTimeout(() => {
+                modal.classList.add('show');
+            }, 10);
         }
 
         function closeServiceModal() {
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
+            modal.classList.remove('show');
+            setTimeout(() => {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }, 300);
             stopImageToggle();
         }
 
@@ -1691,13 +1708,21 @@ Enviado desde drmorci.com`
             const emailModal = document.getElementById('emailTemplateModal');
             emailModal.style.display = 'block';
             document.body.style.overflow = 'hidden';
+            
+            // Trigger smooth animation
+            setTimeout(() => {
+                emailModal.classList.add('show');
+            }, 10);
         }
 
         function closeEmailModal() {
             const emailModal = document.getElementById('emailTemplateModal');
-            emailModal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-            document.getElementById('emailForm').reset();
+            emailModal.classList.remove('show');
+            setTimeout(() => {
+                emailModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+                document.getElementById('emailForm').reset();
+            }, 300);
         }
 
         // Handle email form submission
@@ -1759,7 +1784,7 @@ Enviado desde drmorci.com`
 
         // Enhanced keyboard navigation
         document.addEventListener('keydown', function(e) {
-            if (modal.style.display === 'block') {
+            if (modal.classList.contains('show')) {
                 if (e.key === 'Escape') {
                     closeServiceModal();
                 } else if (e.key === 'ArrowLeft' && !prevButton.disabled) {
@@ -1767,7 +1792,7 @@ Enviado desde drmorci.com`
                 } else if (e.key === 'ArrowRight' && !nextButton.disabled) {
                     nextButton.click();
                 }
-            } else if (document.getElementById('emailTemplateModal').style.display === 'block') {
+            } else if (document.getElementById('emailTemplateModal').classList.contains('show')) {
                 if (e.key === 'Escape') {
                     closeEmailModal();
                 }
